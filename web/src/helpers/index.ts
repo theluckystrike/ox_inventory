@@ -145,10 +145,13 @@ export const findAvailableSlot = (item: Slot, data: ItemData, items: Slot[]) => 
   return stackableSlot || items.find((target) => target.name === undefined);
 };
 
+export const hasContainerPanel = (state: State): boolean =>
+  state.containerInventory.id !== '' && state.containerInventory.id !== state.rightInventory.id;
+
 export const resolveInventoryPanel = (state: State, type: Inventory['type']): Inventory => {
   if (type === InventoryType.PLAYER) return state.leftInventory;
   if (type === InventoryType.BACKPACK) return state.backpackInventory;
-  if (type === InventoryType.CONTAINER) return state.containerInventory;
+  if (type === InventoryType.CONTAINER && hasContainerPanel(state)) return state.containerInventory;
 
   return state.rightInventory;
 };

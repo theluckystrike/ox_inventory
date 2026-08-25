@@ -119,7 +119,6 @@ export const selectRightInventory = (state: RootState) => state.inventory.rightI
 export const selectBackpackInventory = (state: RootState) => state.inventory.backpackInventory;
 export const hasBackpack = (state: RootState) => state.inventory.backpackInventory.id !== '';
 export const selectContainerInventory = (state: RootState) => state.inventory.containerInventory;
-export const hasContainer = (state: RootState) => state.inventory.containerInventory.id !== '';
 export const selectItemAmount = (state: RootState) => state.inventory.itemAmount;
 export const selectIsBusy = (state: RootState) => state.inventory.isBusy;
 

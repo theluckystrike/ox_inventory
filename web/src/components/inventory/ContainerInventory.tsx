@@ -2,13 +2,11 @@ import React from 'react';
 import InventoryGrid from './InventoryGrid';
 import SpatialGrid from './SpatialGrid';
 import { useAppSelector } from '../../store';
-import { hasContainer, selectContainerInventory } from '../../store/inventory';
+import { selectContainerInventory } from '../../store/inventory';
+import { hasContainerPanel } from '../../helpers';
 import { UiConfig } from '../../store/uiConfig';
 
-export const useShowContainer = (): boolean =>
-  useAppSelector(
-    (state) => hasContainer(state) && state.inventory.containerInventory.id !== state.inventory.rightInventory.id
-  );
+export const useShowContainer = (): boolean => useAppSelector((state) => hasContainerPanel(state.inventory));
 
 const ContainerInventory: React.FC = () => {
   const containerInventory = useAppSelector(selectContainerInventory);
