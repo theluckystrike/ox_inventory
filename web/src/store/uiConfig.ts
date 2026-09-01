@@ -102,6 +102,8 @@ const mergeGrid = (grid?: Partial<UiConfigShape['grid']>): UiConfigShape['grid']
 });
 
 const mergeHotbar = (hotbar?: Partial<UiConfigShape['hotbar']>): UiConfigShape['hotbar'] => {
+  if (!hotbar) return UiConfig.hotbar;
+
   const count = typeof hotbar?.count === 'number' && hotbar.count > 0 ? Math.floor(hotbar.count) : 0;
 
   if (!hotbar?.enabled || count < 1) return { enabled: false, count: 0 };
